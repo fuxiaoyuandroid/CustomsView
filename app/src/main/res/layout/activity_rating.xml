@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cv.customviews.rating.RatingActivity">
+    <com.cv.customviews.rating.CustomRatingBar
+        android:id="@+id/crb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:starNormal="@drawable/star_normal"
+        app:starFocus="@drawable/star_selected"
+        app:starCount="5"/>
+</android.support.constraint.ConstraintLayout>

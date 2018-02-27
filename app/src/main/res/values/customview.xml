@@ -15,4 +15,19 @@
         <attr name="originalColor" format="color"/>
         <attr name="changeColor" format="color"/>
     </declare-styleable>
+
+
+    <declare-styleable name="CustomProgressBar">
+        <attr name="inBackground" format="color"/>
+        <attr name="outBackground" format="color"/>
+        <attr name="roundWidth" format="dimension"/>
+        <attr name="barTextSize" format="dimension"/>
+        <attr name="barTextColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CustomRatingBar">
+        <attr name="starNormal" format="reference"/>
+        <attr name="starFocus" format="reference"/>
+        <attr name="starCount" format="integer"/>
+    </declare-styleable>
 </resources>
