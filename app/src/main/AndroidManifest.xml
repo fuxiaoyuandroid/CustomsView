@@ -11,16 +11,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".countstep.StepActivity" />
-        <activity android:name=".fontcolorchange.ViewPagerActivity"></activity>
+        <activity android:name=".fontcolorchange.ViewPagerActivity" />
         <activity android:name=".loading.LoadingActivity">
+
+        </activity>
+        <activity android:name=".rating.RatingActivity"></activity>
+        <activity android:name=".lettersearch.LetterSearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".rating.RatingActivity">
-
         </activity>
     </application>
 

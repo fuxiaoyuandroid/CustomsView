@@ -30,4 +30,9 @@
         <attr name="starFocus" format="reference"/>
         <attr name="starCount" format="integer"/>
     </declare-styleable>
+
+    <declare-styleable name="LetterSearchBar">
+        <attr name="letterSize" format="dimension"/>
+        <attr name="letterColor" format="color"/>
+    </declare-styleable>
 </resources>

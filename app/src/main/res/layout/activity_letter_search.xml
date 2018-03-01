@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cv.customviews.lettersearch.LetterSearchActivity">
+    <TextView
+        android:id="@+id/ltv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="A"
+        android:textSize="80sp"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:background="#FF0000"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+    <com.cv.customviews.lettersearch.LetterSearchBar
+        android:id="@+id/lsb"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:letterColor="@color/colorPrimary"
+        android:layout_alignParentRight="true"
+        app:letterSize="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+</RelativeLayout>
