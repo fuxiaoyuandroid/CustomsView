@@ -1,0 +1,15 @@
+//总结View绘制流程
+ViewRootImpl类中
+1> private void performMeasure(int childWidthMeasureSpec, int childHeightMeasureSpec)
+用于指定和测量布局中所有控件的宽和高。
+对于ViewGroup，先去测量里面的子View，根据子View的宽高再来计算和指定自己的宽和高；
+对于View，宽高是有父布局和自己共同决定。
+
+2> private void performLayout(WindowManager.LayoutParams lp, int desiredWindowWidth,
+               int desiredWindowHeight)
+用于摆放子布局，for循环所有的子View，用child.layout()摆放子View，前提不是GONE。
+
+3> private void performDraw()
+用于绘制自己还有子View，以及背景。
+对于ViewGroup，首先绘制自己的背景，for循环绘制子View，调用子View的draw();
+对于View，绘制自己的背景，绘制自己显示的内容。

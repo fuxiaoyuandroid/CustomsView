@@ -1,0 +1,33 @@
+1 onMeasure()指定宽高
+1.1 for循环测量子View
+1.2 根据子View计算和指定自己的布局
+
+2 onLayout()摆放
+2.1 for循环摆放所有的子View
+
+3 onDraw() 绘制不需要
+
+问题:
+1.高度可能不一致  (取最高的)
+2.数据来自后台获取，如何解决控件添加 (适配器)
+
+
+
+
+自定义View的套路:
+1.自定义属性，获取自定义属性(达到配置的效果)；
+2.onMeasure用于测量和计算自己的宽高，前提是继承自View，如果是继承自系统已有的TextView，Button，
+已经测量计算好宽高；
+3.onDraw用于绘制自己的显示
+4.onTouch用于与用户交互
+
+自定义ViewGroup的套路：
+1.自定义属性，获取自定义属性(达到配置的效果) 很少有
+2.onMeasure for循环测量子View，根据子View的宽高来计算自己的宽高
+3.onDraw一般不需要，默认情况下不会调用，如果你要绘制需要实现dispatchDraw方法
+4.onLayout用来摆放子View，前提不是gone
+5.在很多情况下不会继承ViewGroup，往往是继承系统已经提供好的ViewGroup，
+如ViewPager ScrollView RelativeLayout
+
+
+

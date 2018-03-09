@@ -12,11 +12,12 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".countstep.StepActivity" />
         <activity android:name=".fontcolorchange.ViewPagerActivity" />
-        <activity android:name=".loading.LoadingActivity">
-
+        <activity android:name=".loading.LoadingActivity" />
+        <activity android:name=".rating.RatingActivity" />
+        <activity android:name=".lettersearch.LetterSearchActivity"></activity>
+        <activity android:name=".viewsource.ViewDemoActivity">
         </activity>
-        <activity android:name=".rating.RatingActivity"></activity>
-        <activity android:name=".lettersearch.LetterSearchActivity">
+        <activity android:name=".stream.StreamActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
