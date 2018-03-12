@@ -14,10 +14,10 @@
         <activity android:name=".fontcolorchange.ViewPagerActivity" />
         <activity android:name=".loading.LoadingActivity" />
         <activity android:name=".rating.RatingActivity" />
-        <activity android:name=".lettersearch.LetterSearchActivity"></activity>
-        <activity android:name=".viewsource.ViewDemoActivity">
-        </activity>
-        <activity android:name=".stream.StreamActivity">
+        <activity android:name=".lettersearch.LetterSearchActivity" />
+        <activity android:name=".viewsource.ViewDemoActivity"></activity>
+        <activity android:name=".stream.StreamActivity"></activity>
+        <activity android:name=".viewsource.TouchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

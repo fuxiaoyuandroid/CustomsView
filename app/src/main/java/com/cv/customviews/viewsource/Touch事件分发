@@ -1,0 +1,190 @@
+View的Touch事件分发:
+现象1：OnTouchListener onTouchEvent onClickListener三个都有的情况下,且OnTouchListener返回false的时候
+onTouchListener.Down -> onTouch.Down -> onTouchListener.Move
+        -> onTouch.Move->onTouchListener.Up -> onTouch.Up->onClick
+现象2：OnTouchListener onTouchEvent onClickListener三个都有的情况下,且OnTouchListener返回true的时候
+onTouchListener.Down -> onTouchListener.Move -> onTouchListener.Up
+
+现象3：onTouchEvent onClickListener  前提是onTouchEvent返回true
+
+onTouch.Down->onTouchMove->onTouchUp
+
+
+View与Touch相关的两个重要方法
+1.dispatchTouchEvent
+boolean result = false;
+ListenerInfo li = mListenerInfo;
+ListenerInfo类中存放了关于View所有Listener信息
+
+if (li != null && li.mOnTouchListener != null
+               && (mViewFlags & ENABLED_MASK) == ENABLED  //是否是enable
+               && li.mOnTouchListener.onTouch(this, event)) { //如果是false  result = false 不进方法
+                                                               //如果是true   result = true
+                result = true;
+}
+if (!result && onTouchEvent(event)) { //false  才执行onTouchEvent，如果是true，不执行
+          result = true;
+}
+
+返回false   到目前为止还未执行点击事件
+onTouchEvent中有case MotionEvent.ACTION_UP:里面调用了performClick();
+
+li.mOnClickListener.onClick(this);
+
+2.onTouchEvent 一般都会被我们复写
+
+
+ViewGroup的touch事件分发
+
+dispatchTouchEvent 源码查看
+
+boolean handled = false;
+// Handle an initial down.
+if (actionMasked == MotionEvent.ACTION_DOWN) {
+// Throw away all previous state when starting a new touch gesture.
+// The framework may have dropped the up or cancel event for the previous gesture
+// due to an app switch, ANR, or some other state change.
+取消并清除TouchTargets  mFirstTouchTarget = null;
+cancelAndClearTouchTargets(ev);
+resetTouchState();
+}
+ /**
+  * Clears all touch targets.
+  */
+private void clearTouchTargets() {
+        TouchTarget target = mFirstTouchTarget;
+        if (target != null) {
+            do {
+                TouchTarget next = target.next;链表
+                target.recycle();回收
+                target = next;
+            } while (target != null);
+            mFirstTouchTarget = null; //核心  清除所有
+        }
+}
+
+DOWN正常情况下会调用 intercepted = onInterceptTouchEvent(ev); intercepted默认返回false
+
+TouchTarget newTouchTarget = null;
+if (!canceled && !intercepted) { 默认情况下是 false && false -> true   if能够执行下去
+ if (newTouchTarget == null && childrenCount != 0) {//可以执行
+    final View[] children = mChildren;
+    for (int i = childrenCount - 1; i >= 0; i--) {
+      //反序for循环 RelativeLayout时会叠加，拿最上面的子View->child
+      newTouchTarget = getTouchTarget(child);
+         /**
+           * Gets the touch target for specified child view.
+           * Returns null if not found.
+           */
+          private TouchTarget getTouchTarget(@NonNull View child) {
+              for (TouchTarget target = mFirstTouchTarget; target != null; target = target.next) {
+                  if (target.child == child) {
+                      return target;
+                  }
+              }
+              return null;
+          }
+      //第一次是null 不走if
+      if (newTouchTarget != null) {
+          // Child is already receiving touch within its bounds.
+          // Give it the new pointer in addition to the ones it is handling.
+          newTouchTarget.pointerIdBits |= idBitsToAssign;
+          break;
+      }
+      if (dispatchTransformedTouchEvent(ev, false, child, idBitsToAssign)) {
+              if (child == null) { //如果没有child 调用自己的dispatchTouchEvent(event)
+                  handled = super.dispatchTouchEvent(event);
+              } else {
+                   //如果有child，会调用child的dispatchTouchEvent(event),因为有自View,走else
+                   handled = child.dispatchTouchEvent(event);  //true
+               }
+              //如果子View返回的handled是true，if进来 主要给 mFirstTouchTarget = target; 赋值
+              newTouchTarget = addTouchTarget(child, idBitsToAssign);
+
+              addTouchTarget()源码
+              private TouchTarget addTouchTarget(@NonNull View child, int pointerIdBits) {
+                    final TouchTarget target = TouchTarget.obtain(child, pointerIdBits);
+                    //从线程池里取target
+                    target.next = mFirstTouchTarget;
+                    mFirstTouchTarget = target;
+                    return target;
+              }
+      }
+
+    }
+ }
+}
+
+onInterceptTouchEvent 源码查看
+
+onTouchEvent 源码查看
+
+1.正常情况下：
+第一次DOWN  ViewGroup.dispatchTouchEvent -> ViewGroup.onInterceptTouchEvent
+                             ->View.dispatchTouchEvent->View.onTouch->View.onTouchEvent
+
+第二次MOVE  ViewGroup.dispatchTouchEvent -> ViewGroup.onInterceptTouchEvent
+                             ->View.dispatchTouchEvent->View.onTouch->View.onTouchEvent
+
+第三次UP  ViewGroup.dispatchTouchEvent -> ViewGroup.onInterceptTouchEvent
+                         ->View.dispatchTouchEvent->View.onTouch->View.onTouchEvent->View.OnClick
+
+2.如果注释掉OnClick事件：没有消费事件，没有返回true
+ViewGroup.dispatchTouchEvent->ViewGroup.onInterceptTouchEvent->View.dispatchTouchEvent
+                            ->View.onTouch->View.onTouchEvent->ViewGroup.onTouchEvent
+
+3.如果只将View的onTouchEvent返回为true的情况下
+第一次DOWN  ViewGroup.dispatchTouchEvent -> ViewGroup.onInterceptTouchEvent
+                             ->View.dispatchTouchEvent->View.onTouch->View.onTouchEvent
+
+第二次MOVE  ViewGroup.dispatchTouchEvent -> ViewGroup.onInterceptTouchEvent
+                             ->View.dispatchTouchEvent->View.onTouch->View.onTouchEvent
+
+第三次UP  ViewGroup.dispatchTouchEvent -> ViewGroup.onInterceptTouchEvent
+                         ->View.dispatchTouchEvent->View.onTouch->View.onTouchEvent
+
+4.如果ViewGroup的onInterceptTouchEvent() 方法里面返回true的情况下
+ViewGroup.dispatchTouchEvent -> ViewGroup.onInterceptTouchEvent
+                         ->ViewGroup.onTouchEvent
+
+
+事件分发:dispatchTouchEvent
+
+事件拦截:interceptTouchEvent
+
+事件触摸:touchEvent
+
+如果子View没有一个地方返回true，只会响应一次DOWN事件，代表不需要消费该事件；
+如果响应MOVE,UP，必须找个方法返回true。
+
+对于ViewGroup来讲，如果你想拦截子View的Touch事件，可以复写onInterceptTouchEvent()返回true即可；
+如果onInterceptTouchEvent()返回的是true，会执行ViewGroup的onTouchEvent方法；
+如果子View没有消费touch事件，也会调用该ViewGroup的onTouchEvent方法。
+
+
+
+
+4次课
+酷狗侧滑菜单效果
+
+QQ6.0侧滑菜单效果
+
+二手车之家的垂直滑动列表
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
