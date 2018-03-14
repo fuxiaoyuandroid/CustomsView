@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cv.customviews.KgSlidingMenu.KgSlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/slide_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:menuRightMargin="62dp"
+    android:background="@drawable/home_menu_bg"
+    android:orientation="vertical"
+    tools:context="com.cv.customviews.KgSlidingMenu.SlidingMenuActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <include layout="@layout/layout_home_menu" />
+
+        <include layout="@layout/layout_home_content" />
+    </LinearLayout>
+</com.cv.customviews.KgSlidingMenu.KgSlidingMenu>

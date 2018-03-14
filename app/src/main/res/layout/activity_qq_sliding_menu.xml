@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cv.customviews.QqSlidingMenu.QqSlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:rightPadding="70dp"
+    android:background="#FFFFFF"
+    tools:context="com.cv.customviews.QqSlidingMenu.QqSlidingMenuActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- 菜单布局-->
+        <include layout="@layout/layout_main_menu" />
+
+        <!-- 内容布局 -->
+        <include layout="@layout/layout_main_content" />
+    </LinearLayout>
+</com.cv.customviews.QqSlidingMenu.QqSlidingMenu>

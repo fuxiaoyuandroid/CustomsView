@@ -35,4 +35,12 @@
         <attr name="letterSize" format="dimension"/>
         <attr name="letterColor" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="KgSlidingMenu">
+        <attr name="menuRightMargin" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="QqSlidingMenu">
+        <attr name="rightPadding" format="dimension"/>
+    </declare-styleable>
 </resources>

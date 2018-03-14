@@ -15,14 +15,19 @@
         <activity android:name=".loading.LoadingActivity" />
         <activity android:name=".rating.RatingActivity" />
         <activity android:name=".lettersearch.LetterSearchActivity" />
-        <activity android:name=".viewsource.ViewDemoActivity"></activity>
-        <activity android:name=".stream.StreamActivity"></activity>
-        <activity android:name=".viewsource.TouchActivity">
+        <activity android:name=".viewsource.ViewDemoActivity" />
+        <activity android:name=".stream.StreamActivity" />
+        <activity android:name=".viewsource.TouchActivity"></activity>
+        <activity android:name=".KgSlidingMenu.SlidingMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".QqSlidingMenu.QqSlidingMenuActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         </activity>
     </application>
 
