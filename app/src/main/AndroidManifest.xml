@@ -17,17 +17,17 @@
         <activity android:name=".lettersearch.LetterSearchActivity" />
         <activity android:name=".viewsource.ViewDemoActivity" />
         <activity android:name=".stream.StreamActivity" />
-        <activity android:name=".viewsource.TouchActivity"></activity>
-        <activity android:name=".KgSlidingMenu.SlidingMenuActivity">
+        <activity android:name=".viewsource.TouchActivity" />
+        <activity android:name=".KgSlidingMenu.SlidingMenuActivity"/>
+
+        <activity android:name=".QqSlidingMenu.QqSlidingMenuActivity"/>
+
+        <activity android:name=".carhome.VerticalDragActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".QqSlidingMenu.QqSlidingMenuActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         </activity>
     </application>
 

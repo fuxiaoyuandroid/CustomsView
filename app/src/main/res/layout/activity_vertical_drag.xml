@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cv.customviews.carhome.VerticalDragListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cv.customviews.carhome.VerticalDragActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:textSize="60dp"
+        android:text="断桥残雪"/>
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary"
+        android:textSize="60dp"
+        android:gravity="center"
+        android:text="如果当时"/>-->
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"></ListView>
+</com.cv.customviews.carhome.VerticalDragListView>

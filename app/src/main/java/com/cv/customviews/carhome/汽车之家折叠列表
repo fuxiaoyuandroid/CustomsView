@@ -1,0 +1,22 @@
+1.ViewDragHelper介绍
+    创建ViewDragHelper.create()
+
+    //1.拖动我们的子View
+        private ViewDragHelper.Callback mDragHelperCallBack = new ViewDragHelper.Callback() {
+            @Override
+            public boolean tryCaptureView(View child, int pointerId) {
+                //指定该子View是否可以拖动
+                return true;
+            }
+
+            @Override
+            public int clampViewPositionVertical(View child, int top, int dy) {
+                //垂直拖动移动的位置
+                return top ;
+            }
+        };
+2.效果分析实现
+2.1后面不能拖动
+2.2列表只能垂直拖动
+2.3垂直拖动的距离只能是后面菜单View的高度
+2.4松开的时候两者选其一，打开或关闭
