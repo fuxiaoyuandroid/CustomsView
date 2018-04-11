@@ -6,8 +6,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.cv.customviews.R;
 
 /**
  * Created by Administrator on 2018/2/2 0002.
@@ -46,17 +49,17 @@ public class ShapeChangeView extends View {
             //圆
             case Circle:
                 int center = getWidth()/2;
-                mPaint.setColor(Color.RED);
+                mPaint.setColor(ContextCompat.getColor(getContext(),R.color.circle));
                 canvas.drawCircle(center,center,center,mPaint);
                 break;
             //正方形
             case Square:
-                mPaint.setColor(Color.GREEN);
+                mPaint.setColor(ContextCompat.getColor(getContext(),R.color.rect));
                 canvas.drawRect(0,0,getWidth(),getHeight(),mPaint);
                 break;
             //三角
             case Triangle:
-                mPaint.setColor(Color.BLUE);
+                mPaint.setColor(ContextCompat.getColor(getContext(),R.color.triangle));
                 //path
                 if (mPath == null){
                     Path path = new Path();
@@ -93,5 +96,9 @@ public class ShapeChangeView extends View {
     //枚举，三种形状
     public enum Shape{
         Circle,Square,Triangle
+    }
+
+    public Shape getCurrentShape(){
+        return mCurrentShape;
     }
 }
