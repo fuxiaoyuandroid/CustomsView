@@ -45,7 +45,9 @@ public class ListDataMenuAdapter extends BaseMenuAdapter {
         menuView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,mItems[position],Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext,mItems[position],Toast.LENGTH_SHORT).show();
+                closeMenu();
+                Toast.makeText(mContext,"1111111",Toast.LENGTH_SHORT).show();
             }
         });
         return menuView;

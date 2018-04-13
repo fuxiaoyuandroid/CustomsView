@@ -121,6 +121,17 @@ public class ListDataScreenView extends LinearLayout implements View.OnClickList
     }
 
     /**
+     * 具体的观察者
+     */
+    private class SimpleMenuObserver extends MenuObserver{
+
+        @Override
+        public void closeMenu() {
+            ListDataScreenView.this.closeMenu();
+        }
+    }
+    private SimpleMenuObserver mSimpleMenuObserver;
+    /**
      * 适配器设置
      * @param adapter
      */
@@ -129,8 +140,13 @@ public class ListDataScreenView extends LinearLayout implements View.OnClickList
         if (adapter == null){
             throw new NullPointerException("no adapter");
         }
+        if (mMenuAdapter != null){
+            mMenuAdapter.unregisterDataSetObserver(mSimpleMenuObserver);
+        }
         this.mMenuAdapter = adapter;
-
+        //注册观察者 具体的实例
+        mSimpleMenuObserver = new SimpleMenuObserver();
+        mMenuAdapter.registerDataSetObserver(mSimpleMenuObserver);
         //获取tab数
         int count = mMenuAdapter.getCount();
 
