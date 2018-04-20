@@ -10,43 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-
         <activity android:name=".countstep.StepActivity" />
-
         <activity android:name=".fontcolorchange.ViewPagerActivity" />
-
-        <activity android:name=".loading.LoadingActivity"></activity>
-
-        <activity android:name=".rating.RatingActivity" />
-
+        <activity android:name=".loading.LoadingActivity" />
+        <activity android:name=".rating.RatingActivity"></activity>
         <activity android:name=".lettersearch.LetterSearchActivity" />
-
         <activity android:name=".viewsource.ViewDemoActivity" />
-
         <activity android:name=".stream.StreamActivity" />
-
         <activity android:name=".viewsource.TouchActivity" />
-
         <activity android:name=".KgSlidingMenu.SlidingMenuActivity" />
-
         <activity android:name=".QqSlidingMenu.QqSlidingMenuActivity" />
-
-        <activity android:name=".carhome.VerticalDragActivity"></activity>
-
-        <activity android:name=".loading.LoadingChangeActivity"></activity>
-
+        <activity android:name=".carhome.VerticalDragActivity" />
+        <activity android:name=".loading.LoadingChangeActivity" />
         <activity
             android:name=".statusbar.StatusBarChangeActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".statusbar.BehaviorActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".morechoose.MoreChooseActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-
-        <activity android:name=".morechoose.MoreChooseActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".bezier.BezierActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
