@@ -99,4 +99,12 @@ public class CustomRatingBar extends View {
         }
         return true;//滑动没效果  默认返回false   不消费  不会再次进入ACTION_MOVE
     }
+
+    public int getCurrentGrade(){
+        return mCurrentGrade;
+    }
+
+    public void setCurrentGrade(int i){
+        mCurrentGrade = i;
+    }
 }
