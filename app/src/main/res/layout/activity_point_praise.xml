@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.cv.customviews.pointpraise.LoveLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/love_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cv.customviews.pointpraise.PointPraiseActivity">
+    <Button
+        android:id="@+id/pointPraiseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点赞按钮"
+        android:textSize="20sp"
+        android:onClick="pointPraise"
+        android:background="@android:color/transparent"
+        android:textColor="@color/colorAccent"
+        />
+</com.cv.customviews.pointpraise.LoveLayout>
