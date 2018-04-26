@@ -31,11 +31,13 @@
         <activity
             android:name=".morechoose.MoreChooseActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".bezier.BezierActivity"></activity>
-        <activity android:name=".pointpraise.PointPraiseActivity">
-        </activity>
-        <activity android:name=".parallax.ParallaxActivity"
+        <activity android:name=".bezier.BezierActivity" />
+        <activity android:name=".pointpraise.PointPraiseActivity"></activity>
+        <activity
+            android:name=".parallax.ParallaxActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name=".parallaxloading.ParallaxLoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
