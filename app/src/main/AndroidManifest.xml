@@ -33,13 +33,15 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".bezier.BezierActivity"></activity>
         <activity android:name=".pointpraise.PointPraiseActivity">
+        </activity>
+        <activity android:name=".parallax.ParallaxActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".parallax.ParallaxActivity"></activity>
     </application>
 
 </manifest>
