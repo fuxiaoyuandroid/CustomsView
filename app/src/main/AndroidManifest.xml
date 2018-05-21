@@ -32,12 +32,13 @@
             android:name=".morechoose.MoreChooseActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".bezier.BezierActivity" />
-        <activity android:name=".pointpraise.PointPraiseActivity"></activity>
+        <activity android:name=".pointpraise.PointPraiseActivity" />
         <activity
             android:name=".parallax.ParallaxActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".parallaxloading.ParallaxLoadingActivity">
+        </activity>
+        <activity android:name=".copyskimmerfm.SkimmerFMActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
